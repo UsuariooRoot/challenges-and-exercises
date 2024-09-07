@@ -1,0 +1,204 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+}
+
+:root {
+  --color-background: #272C34;
+  --color-sky: rgb(26, 195, 251);
+  --color-shadow: rgba(0, 0, 0, 0.35);
+  --color-ground: rgb(209, 196, 49);
+}
+
+
+body {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+}
+
+.frame {
+  display: grid;
+  place-content: center;
+  margin: 0 auto;
+  width: 400px;
+  height: 400px;
+  background-color: var(--color-background);
+}
+
+.center {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  animation: color-sky 4s ease-out infinite;
+}
+
+.sun {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  top: 7px;
+  left: 73px;
+  transform-origin: 50% 400%;
+  animation: sun-goes-down 4s ease-out infinite;
+}
+
+.pyramide {
+  height: 55px;
+  bottom: 70px;
+  left: 50%;
+}
+
+.pyramide-left {
+  width: 75px;
+  position: absolute;
+  transform: translateX(-73%);
+  clip-path: polygon(73% 0, 0% 100%, 100% 100%);
+  animation: color-pyramide 4s ease-out infinite;
+}
+
+.pyramide-right {
+  position: absolute;
+  z-index: 10;
+  background-color: rgb(255, 255, 255);
+  clip-path: polygon(0 0, 27% 100%, 100% 100%);
+  width: 60px;
+  animation: color-pyramide 4s ease-out infinite reverse;
+}
+
+.shadow {
+  position: absolute;
+  z-index: 10;
+  top: 130px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150%;
+  height: 100px;
+  clip-path: polygon(31.5% 0, 100% 20%, 70% 0);
+  animation: shadow-of-the-pyramide 4s ease-out infinite;
+  background-color: var(--color-shadow);
+
+}
+
+.ground {
+  position: absolute;
+  bottom: 0;
+  height: 70px;
+  width: 100%;
+  background-color: var(--color-ground);
+  animation: color-ground 4s ease-out infinite;
+}
+
+@keyframes color-sky {
+  0% {
+    background-color: var(--color-sky);
+  }
+
+  70% {
+    background-color: var(--color-sky);
+  }
+
+  100% {
+    background: #272C34;
+  }
+}
+
+@keyframes shadow-of-the-pyramide {
+  0% {
+    background-color: var(--color-shadow);
+    clip-path: polygon(31.5% 0, 100% 0%, 70% 0);
+  }
+
+  30% {
+    clip-path: polygon(31.5% 0, 100% 40%, 70% 0);
+  }
+
+  55% {
+    clip-path: polygon(31.5% 0, 51% 20%, 70% 0);
+  }
+
+  75% {
+    clip-path: polygon(31.5% 0, 0 37%, 70% 0);
+    background-color: var(--color-shadow);
+  }
+
+  100% {
+    background-color: #272C34;
+    clip-path: polygon(31.5% 0, 0 0, 70% 0);
+  }
+}
+
+@keyframes color-pyramide {
+  0% {
+    background: #272C34;
+  }
+
+  30% {
+    background: #F4F4F4;
+  }
+
+  70% {
+    background: #DDDADA;
+  }
+
+  100% {
+    background: #272C34;
+  }
+}
+
+/* @keyframes color-pyramide-right {
+  0% {
+    background: #272C34;
+  }
+
+  50% {
+    background: #b1b6bf;
+  }
+
+  70% {
+    background: #ccd2dd;
+  }
+
+  100% {
+    background: #bbc0c8;
+  }
+} */
+
+@keyframes sun-goes-down {
+  0% {
+    background: #272C34;
+    transform: rotate(-70deg);
+  }
+
+  30% {
+    background: #FFEF00;
+    transform: rotate(-28deg);
+  }
+
+  70% {
+    background: #FFEF00;
+  }
+
+  100% {
+    background: #272C34;
+    transform: rotate(70deg);
+  }
+}
+
+@keyframes color-ground {
+  0% {
+    background-color: var(--color-ground);
+  }
+
+  70% {
+    background-color: var(--color-ground);
+  }
+
+  100% {
+    background: #272C34;
+  }
+}

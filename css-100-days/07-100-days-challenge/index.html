@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body>
+  <div class="frame">
+    <div class="container">
+      <div id="menu">
+        <div class="menu-sections">
+          <button class="menu-section-btn"><i class="fa-solid fa-gauge-high"></i><span>Dashboard</span></button>
+          <button class="menu-section-btn"><i class="fa-solid fa-user"></i><span>Profile</span></button>
+          <button class="menu-section-btn"><i class="fa-solid fa-bell"></i><span>Notifications</span></button>
+          <button class="menu-section-btn"><i class="fa-solid fa-envelope"></i><span>Messges</span></button>
+          <button class="menu-section-btn"><i class="fa-solid fa-gear"></i><span>Setting</span></button>
+        </div>
+      </div>
+      <div id="st">
+        <header class="st-header">
+          <div class="st-header-btn">
+            <button id="menu__icon"><i class="fa-solid fa-sliders"></i></button>
+          </div>
+          <div class="st-header-title">
+            Notifications
+          </div>
+          <div class="st-header-search">
+            <input type="checkbox" id="search">
+            <label for="search"><i class="fa-solid fa-magnifying-glass"></i></label>
+            <input type="text" class="input-text" placeholder="Search...">
+          </div>
+        </header>
+        <section class="st-notifications">
+          <div class="st-notification st-notification-first">
+            <span class="st-notification-hora">9:24 AM</span>
+            <span class="st-notification-text">
+              <strong>John Walker</strong> posted a photo on your wall.
+            </span>
+          </div>
+          <div class="st-notification st-notification-second">
+            <span class="st-notification-hora">8:19 AM</span>
+            <span class="st-notification-text">
+              <strong>Alice Parker</strong> commented your last post.
+            </span>
+          </div>
+          <div class="st-notification st-notification-third">
+            <span class="st-notification-hora">Yesterday</span>
+            <span class="st-notification-text">
+              <strong>Luke Wayne</strong> added you as friend.
+            </span>
+          </div>
+        </section>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+
+</html>

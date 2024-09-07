@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  background-color: #333;
+  color: #222;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  background-color: white;
+  padding: 0.1px;
+  transform-origin: top left;
+  transition: 0.9s ease-in;
+}
+
+.container.active {
+  transform: rotate(-20deg);
+}
+
+
+.circle-container{
+  position: fixed;
+  width: 200px;
+  height: 200px;
+  top: -100px;
+  left: -100px;
+  border-radius: 50%;
+  background-color: orangered;
+}
+
+#open,
+#close {
+  width: 35px;
+  height: 35px;
+  position: fixed;
+  font-size: 32px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: 0.9s ease-in;
+}
+
+
+#open {
+  top: 25px;
+  left: 25px;
+}
+
+#close {
+  top: 45px;
+  left: 5px;
+  transform: rotate(20deg);
+  display: none;
+}
+
+.content {
+  width: 52%;
+  margin: 100px auto;
+  overflow: hidden;
+  font-size: 16px;
+}
+
+small {
+  font-style: italic;
+  color: #525252;
+}
+
+p {
+  line-height: 24px;
+  margin: 16px 0;
+}
+
+.content > h3 {
+  margin: 18px 0;
+}
+
+.content > img {
+  width: 100%;
+}
+
+nav {
+  position: fixed;
+  bottom: 80px;
+  padding: 0 30px;
+  left: -100%;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: white;
+  transition: 0.9s ease-in;
+}
+
+nav > ul {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+nav > ul > li {
+  display: flex;
+  gap: 13px;
+  align-items: center;
+}
+
+nav > ul > li > i {
+  font-size: 19px;
+}
+
+nav > ul > li > a {
+  color: aliceblue;
+}
+
+.fa-user-alt {
+  margin-left: 15px;
+}
+
+.fa-envelope {
+  margin-left: 30px;
+}
+
+#close.btnClose {
+  display: block;
+}
+
+.btnOpen {
+  display: none;
+}
+
+#nav.navShow {
+  left: 0%;
+}

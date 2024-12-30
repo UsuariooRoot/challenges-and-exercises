@@ -1,19 +1,18 @@
 import java.util.Arrays;
 
 public class RansomNote {
+    
     public static boolean canConstruct(String ransomNote, String magazine) {
-        if (ransomNote.length() > magazine.length()) return false;
-
-        char[] ransomNoteChars =  ransomNote.toCharArray();
+        char[] ransomNoteChars = ransomNote.toCharArray();
         Arrays.sort(ransomNoteChars);
-        char[] magazineChars =  magazine.toCharArray();
+        char[] magazineChars = magazine.toCharArray();
         Arrays.sort(magazineChars);
 
         int i = 0;
         int j = 0;
         while (i < ransomNoteChars.length && j < magazineChars.length) {
             char c1 = magazineChars[j];
-            char c2 = ransomNoteChars[i]; 
+            char c2 = ransomNoteChars[i];
             if (c1 == c2) {
                 i++;
                 j++;
@@ -25,11 +24,35 @@ public class RansomNote {
                 continue;
             }
 
-            if (c1 > c2) return false;
+            if (c1 > c2)
+                return false;
 
         }
 
         return i == ransomNoteChars.length;
     }
-}
 
+    
+    public static boolean canConstruct2(String ransomNote, String magazine) {
+        if (ransomNote.length() > magazine.length())
+            return false;
+
+        int[] alphabetCounter = new int[26];
+
+        for (int i = 0; i < ransomNote.length(); i++) {
+            alphabetCounter[ransomNote.charAt(i) - 'a']++;
+        }
+
+        for (int i = 0; i < magazine.length(); i++) {
+            alphabetCounter[magazine.charAt(i) - 'a']--;
+        }
+
+        for (int i : alphabetCounter) {
+            if (i > 0)
+                return false;
+        }
+
+        return true;
+    }
+
+}

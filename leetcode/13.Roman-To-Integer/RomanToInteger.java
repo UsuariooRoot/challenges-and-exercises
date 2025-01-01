@@ -34,4 +34,28 @@ public class RomanToInteger {
 
         return res;
     }
+
+    public static int romanToInt2(String s) {
+        HashMap<Character, Integer> values = new HashMap<>();
+        values.put('I', 1);
+        values.put('V', 5);
+        values.put('X', 10);
+        values.put('L', 50);
+        values.put('C', 100);
+        values.put('D', 500);
+        values.put('M', 1000);
+
+        char[] letters = s.toCharArray();
+        int res = values.get(letters[letters.length - 1]);
+        for (int i = letters.length - 2; i >= 0; i--) {
+            int value = values.get(letters[i]);
+            if (value < values.get(letters[i + 1])) {
+                res -= value;
+            } else {
+                res += value;
+            }
+        }
+
+        return res;
+    }
 }

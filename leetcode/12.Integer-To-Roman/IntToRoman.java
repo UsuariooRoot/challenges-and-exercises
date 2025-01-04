@@ -64,4 +64,42 @@ public class IntToRoman {
 
         return sb.toString();
     }
+
+    static class Symbol {
+        int value;
+        String symbol;
+    
+        Symbol(int value, String symbol) {
+            this.value = value;
+            this.symbol = symbol;
+        }
+    }
+
+    public static String intToRoman3(int num) {
+        Symbol[] symbols = {
+            new Symbol(1000, "M"),
+            new Symbol(900, "CM"),
+            new Symbol(500, "D"),
+            new Symbol(400, "CD"),
+            new Symbol(100, "C"),
+            new Symbol(90, "XC"),
+            new Symbol(50, "L"),
+            new Symbol(40, "XL"),
+            new Symbol(10, "X"),
+            new Symbol(9, "IX"),
+            new Symbol(5, "V"),
+            new Symbol(4, "IV"),
+            new Symbol(1, "I")
+        };
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < symbols.length && num > 0; i++) {
+            while (num >= symbols[i].value) {
+                sb.append(symbols[i].symbol);
+                num -= symbols[i].value;
+            }
+        }
+
+        return sb.toString();
+    }
 }

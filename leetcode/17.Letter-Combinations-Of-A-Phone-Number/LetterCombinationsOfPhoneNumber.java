@@ -42,6 +42,29 @@ public class LetterCombinationsOfPhoneNumber {
         return res;
     }
 
+    public static List<String> letterCombinations2(String digits) {
+        List<String> res = new ArrayList<>();
+        if (digits.isEmpty())
+            return res;
+
+        backtrack(digits, res, new StringBuilder());
+        return res;
+    }
+
+    private static void backtrack(String digits, List<String> res, StringBuilder com) {
+        if (digits.isEmpty()) {
+            res.add(com.toString());
+            return;
+        }
+
+        char[] letters = keyboard[digits.charAt(0) - 48];
+
+        for (int i = 0; i < letters.length; i++) {
+            backtrack(digits.substring(1), res, com.append(letters[i]));
+            com.deleteCharAt(com.length() - 1);
+        }
+    }
+
     static class Node {
         char[] val;
         int lastIdx;
@@ -59,20 +82,20 @@ public class LetterCombinationsOfPhoneNumber {
         }
     }
 
-    private static Node createDoublyLinkedList(String digits) {
+    private final static char[][] keyboard = new char[][] {
+            {},
+            {},
+            { 'a', 'b', 'c' },
+            { 'd', 'e', 'f' },
+            { 'g', 'h', 'i' },
+            { 'j', 'k', 'l' },
+            { 'm', 'n', 'o' },
+            { 'p', 'q', 'r', 's' },
+            { 't', 'u', 'v' },
+            { 'w', 'x', 'y', 'z' }
+    };
 
-        char[][] keyboard = new char[][] {
-                {},
-                {},
-                { 'a', 'b', 'c' },
-                { 'd', 'e', 'f' },
-                { 'g', 'h', 'i' },
-                { 'j', 'k', 'l' },
-                { 'm', 'n', 'o' },
-                { 'p', 'q', 'r', 's' },
-                { 't', 'u', 'v' },
-                { 'w', 'x', 'y', 'z' }
-        };
+    private static Node createDoublyLinkedList(String digits) {
 
         Node head = new Node(keyboard[digits.charAt(0) - 48]);
         Node current = head;

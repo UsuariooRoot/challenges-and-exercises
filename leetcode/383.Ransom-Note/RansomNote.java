@@ -1,7 +1,11 @@
 import java.util.Arrays;
 
+/**
+ * Created: 2024-12-30
+ * Author: UoRoot
+ */
 public class RansomNote {
-    
+
     public static boolean canConstruct(String ransomNote, String magazine) {
         char[] ransomNoteChars = ransomNote.toCharArray();
         Arrays.sort(ransomNoteChars);
@@ -32,7 +36,6 @@ public class RansomNote {
         return i == ransomNoteChars.length;
     }
 
-    
     public static boolean canConstruct2(String ransomNote, String magazine) {
         if (ransomNote.length() > magazine.length())
             return false;
@@ -50,6 +53,25 @@ public class RansomNote {
         for (int i : alphabetCounter) {
             if (i > 0)
                 return false;
+        }
+
+        return true;
+    }
+
+    public static boolean canConstruct3(String ransomNote, String magazine) {
+        if (ransomNote.length() > magazine.length())
+            return false;
+
+        int[] alphabetCounter = new int[26];
+
+        for (int c : magazine.toCharArray()) {
+            alphabetCounter[c - 'a']++;
+        }
+
+        for (int c : ransomNote.toCharArray()) {
+            if (alphabetCounter[c - 'a'] == 0)
+                return false;
+            alphabetCounter[c - 'a']--;
         }
 
         return true;

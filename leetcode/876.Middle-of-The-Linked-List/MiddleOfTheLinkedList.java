@@ -26,8 +26,17 @@ public class MiddleOfTheLinkedList {
 
         return head;
     }
+    
+    // Two node lists, one advances twice as fast as the other
+    public ListNode middleNode2(ListNode head) {
+        ListNode normal = head;
+        ListNode advanced = head;
 
-    public static void main(String[] args) {
-        System.out.println((6 / 2) + 1);
+        while(advanced != null && advanced.next != null) {
+            normal = normal.next;
+            advanced = advanced.next.next;
+        }
+
+        return normal;
     }
 }

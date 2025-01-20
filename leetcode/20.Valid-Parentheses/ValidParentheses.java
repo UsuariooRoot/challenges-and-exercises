@@ -32,37 +32,7 @@ public class ValidParentheses {
         return sb.length() == 0;
     }
 
-    public static boolean isValid2(String s) {
-        if (s.length() % 2 == 1)
-            return false;
-
-        Boolean res = true;
-        backtrak(s.toCharArray(), 0, 0, res);
-
-        return res;
-    }
-
-    private static void backtrak(char[] s, int i, int j, Boolean res) {
-        if (j >= s.length)
-            return;
-        if (!res)
-            return;
-        if (s[j] == '(' || s[j] == '[' || s[j] == '{') {
-            backtrak(s, i++, j++, res);
-        } else {
-            if (s[j] == ')' && s[i] != '(') {
-                res = false;
-            } else if (s[j] == ']' && s[i] != '[') {
-                res = false;
-            } else if (s[j] == '}' && s[i] != '{') {
-                res = false;
-            } else {
-                backtrak(s, i, j++, res);
-            }
-        }
-    }
-
-    public boolean isValid3(String s) {
+    public boolean isValid2(String s) {
         char[] arr = new char[s.length()];
         int i = -1;
         for (char c : s.toCharArray()) {
@@ -82,4 +52,5 @@ public class ValidParentheses {
         }
         return i == -1;
     }
+
 }

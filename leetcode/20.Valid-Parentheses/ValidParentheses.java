@@ -18,8 +18,9 @@ public class ValidParentheses {
         StringBuilder sb = new StringBuilder();
         for (char c : s.toCharArray()) {
             if (openChars.containsKey(c)) {
-                int delIndex = sb.length()-1;
-                if (delIndex < 0) return false;
+                int delIndex = sb.length() - 1;
+                if (delIndex < 0)
+                    return false;
                 if (openChars.get(c).charValue() != sb.charAt(delIndex))
                     return false;
                 sb.deleteCharAt(delIndex);
@@ -42,8 +43,10 @@ public class ValidParentheses {
     }
 
     private static void backtrak(char[] s, int i, int j, Boolean res) {
-        if (j >= s.length) return;
-        if (!res) return;
+        if (j >= s.length)
+            return;
+        if (!res)
+            return;
         if (s[j] == '(' || s[j] == '[' || s[j] == '{') {
             backtrak(s, i++, j++, res);
         } else {
@@ -58,5 +61,25 @@ public class ValidParentheses {
             }
         }
     }
-    
+
+    public boolean isValid3(String s) {
+        char[] arr = new char[s.length()];
+        int i = -1;
+        for (char c : s.toCharArray()) {
+            if (c == '(' || c == '[' || c == '{') {
+                arr[++i] = c;
+            } else {
+                if (i == -1)
+                    return false;
+                if (c == ')' && arr[i] != '(')
+                    return false;
+                if (c == ']' && arr[i] != '[')
+                    return false;
+                if (c == '}' && arr[i] != '{')
+                    return false;
+                i--;
+            }
+        }
+        return i == -1;
+    }
 }

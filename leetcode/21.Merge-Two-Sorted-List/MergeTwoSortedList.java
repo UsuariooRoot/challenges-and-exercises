@@ -53,4 +53,31 @@ public class MergeTwoSortedList {
         return a.val < b.val ? b : a;
     }
 
+    public ListNode mergeTwoLists2(ListNode list1, ListNode list2) {
+        if (list1 == null || list2 == null) {
+            return list1 == null ? list2 : list1;
+        }
+    
+        ListNode temp = new ListNode(
+                Math.min(list1.val, list2.val));
+        ListNode head = temp;
+    
+        ListNode temp1 = list1;
+        list1 = getLowestNode(list1, list2).next;
+        list2 = getHigherNode(temp1, list2);
+    
+        while (list1 != null && list2 != null) {
+            temp.next = new ListNode(getLowestNode(list1, list2).val);
+            temp = temp.next;
+    
+            temp1 = list1;
+            list1 = getLowestNode(list1, list2).next;
+            list2 = getHigherNode(temp1, list2);
+        }
+    
+        temp.next = list1 == null ? list2 : list1;
+    
+        return head;
+    }
+
 }

@@ -1,5 +1,3 @@
-import java.util.Map;
-
 /**
  * Created: 2025-01-19
  * Author: UoRoot
@@ -10,22 +8,19 @@ public class ValidParentheses {
         if (s.length() % 2 == 1)
             return false;
 
-        Map<Character, Character> openChars = Map.of(
-                '}', '{',
-                ')', '(',
-                ']', '[');
-
-        StringBuilder sb = new StringBuilder();
-        for (char c : s.toCharArray()) {
-            if (openChars.containsKey(c)) {
-                int delIndex = sb.length() - 1;
-                if (delIndex < 0)
-                    return false;
-                if (openChars.get(c).charValue() != sb.charAt(delIndex))
-                    return false;
-                sb.deleteCharAt(delIndex);
+        char[] sc = s.toCharArray();
+        StringBuilder sb = new StringBuilder().append(sc[0]);
+        for (int i = 1; i < sc.length; i++) {
+            if (sc[i] == '(' || sc[i] == '[' || sc[i] == '{') {
+                sb.append(sc[i]);
             } else {
-                sb.append(c);
+                int delIndex = sb.length() - 1;
+                if (delIndex > -1 && (sc[i] == ')' && sb.charAt(delIndex) == '(' ||
+                        sc[i] == ']' && sb.charAt(delIndex) == '[' ||
+                        sc[i] == '}' && sb.charAt(delIndex) == '{')) {
+                    sb.deleteCharAt(delIndex);
+                } else
+                    return false;
             }
         }
 

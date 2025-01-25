@@ -8,7 +8,7 @@ class ListNode {
 }
 
 function mergeKLists(lists: Array<ListNode | null>): ListNode | null {
-    const res = new ListNode(0);
+    const res = new ListNode(-(10**4));
     let temp = res;
 
     while (true) {
@@ -16,13 +16,17 @@ function mergeKLists(lists: Array<ListNode | null>): ListNode | null {
         let idxLowestValueNode = -1;
 
         for (let i = 0; i < lists.length; i++) {
-            if (!lists[i]) continue;
-            if ((lists[i] as ListNode).val < lowestValueNode) {
-                idxLowestValueNode = i;
-                lowestValueNode = (lists[i] as ListNode).val;
+            if (lists[i]) {
+                if ((lists[i] as ListNode).val === temp.val) {
+                    idxLowestValueNode = i;
+                    break;
+                }
+                if ((lists[i] as ListNode).val < lowestValueNode) {
+                    idxLowestValueNode = i;
+                    lowestValueNode = (lists[i] as ListNode).val;
+                }
             }
         }
-
         if (idxLowestValueNode < 0) break;
 
         temp.next = lists[idxLowestValueNode] as ListNode;

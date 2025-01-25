@@ -33,3 +33,22 @@ function swapPairs(head: ListNode | null): ListNode | null {
 
     return res.next;
 };
+
+function swapPairs2(head: ListNode | null): ListNode | null {
+    if (head === null || head.next === null) return head;
+
+    const dummy = new ListNode(0, head);
+    let temp = dummy;
+
+    while (temp.next && temp.next.next) {
+        let first = temp.next;
+        let second = temp.next.next;
+
+        first.next = second.next;
+        second.next = first;
+        temp.next = second;
+        temp = first;
+    }
+
+    return dummy.next;
+};

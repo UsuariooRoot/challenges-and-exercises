@@ -38,7 +38,7 @@ function mergeKLists(lists: Array<ListNode | null>): ListNode | null {
 };
 
 function mergeKLists2(lists: Array<ListNode | null>): ListNode | null {
-    if (lists.length < 1){
+    if (lists.length < 1) {
         return null;
     }
 
@@ -69,4 +69,26 @@ function mergeTwoLists(list1: ListNode | null, list2: ListNode | null): ListNode
     temp.next = list1 == null ? list2 : list1;
 
     return res.next;
+}
+
+function mergeKLists3(lists: Array<ListNode | null>): ListNode | null {
+    if (lists.length < 1) return null;
+    const nodes: number[] = []
+    lists.forEach(node => {
+        while (node) {
+            nodes.push(node.val);
+            node = node.next;
+        }
+    })
+
+    nodes.sort((a,b) => a-b);
+
+    const head = new ListNode(0);
+    let temp = head
+    nodes.forEach(n => {
+        temp.next = new ListNode(n);
+        temp = temp.next;
+    });
+
+    return head.next;
 }

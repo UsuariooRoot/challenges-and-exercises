@@ -1,5 +1,7 @@
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created: 2025-01-26
@@ -22,6 +24,18 @@ public class CheckIfNAndItsDoubleExist {
                     return true;
             }
             map.put(arr[i], null);
+        }
+
+        return false;
+    }
+
+    public boolean checkIfExist2(int[] arr) {
+        Set<Integer> map = new HashSet<>();
+
+        for (int i = 0; i < arr.length; i++) {
+            if (map.contains(arr[i] * 2) || arr[i] % 2 == 0 && map.contains(arr[i] / 2))
+                return true;
+            map.add(arr[i]);
         }
 
         return false;

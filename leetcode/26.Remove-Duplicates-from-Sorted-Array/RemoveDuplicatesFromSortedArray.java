@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * Created: 2025-01-27
  * Author: UoRoot
@@ -13,10 +15,9 @@ public class RemoveDuplicatesFromSortedArray {
                 nums[idx++] = nums[i];
             }
         }
-
-        for (int i = idx; i < nums.length; i++) {
-            nums[i] = 0;
-        }
+        
+        if (nums.length > 1 && idx < nums.length)
+            Arrays.fill(nums, idx, nums.length - 1, 0);
 
         return idx;
     }

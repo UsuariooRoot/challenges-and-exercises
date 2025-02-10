@@ -38,4 +38,18 @@ public class MaximumScoreAfterSplittingAString {
         return max;
     }
 
+    public static int maxScore3(String s) {
+        int left = 0, right = 0, len = s.length() - 1, max = Integer.MIN_VALUE;
+
+        for (int i = 0; i < len; i++) {
+            if (s.charAt(i) == '0') left++;
+            else right++;
+
+            max = Math.max(max, left - right);
+        }
+
+        if(s.charAt(len) == '1') right++;
+        return max + right;
+    }
+
 }

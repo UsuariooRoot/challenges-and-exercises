@@ -1,6 +1,6 @@
 public class MaximumScoreAfterSplittingAString {
 
-    public int maxScore(String s) {
+    public static int maxScore(String s) {
         int max = -1;
         for (int i = 1; i < s.length(); i++) {
             String left = s.substring(0, i);
@@ -12,13 +12,30 @@ public class MaximumScoreAfterSplittingAString {
         return max;
     }
 
-    private int countCharacters(String str, char character) {
+    private static int countCharacters(String str, char character) {
         int count = 0;
         for (char c : str.toCharArray()) {
             if (c == character)
                 count++;
         }
         return count;
+    }
+
+    public static int maxScore2(String s) {
+        int left = s.charAt(0) == '0' ? 1: 0;
+        int right = countCharacters(s.substring(1), '1');
+        int max = left + right;
+
+        for (int i = 1; i < s.length() - 1; i++) {
+            if (s.charAt(i) == '0')
+                left++;
+            else
+                right--;
+
+            max = Math.max(max, left + right);
+        }
+
+        return max;
     }
 
 }
